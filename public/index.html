@@ -1,0 +1,107 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Neo4j Data</title>
+</head>
+<body>
+
+<button id="loadButton">Load All Data</button>
+<button id="loadButtonReverseMapping">Load All Data Reverse Mapping</button>
+<button id="loadWoSubGroupButton">Load Data Without Sub-Group</button>
+<button id="loadNerDataButton">Load NER data From GPT4</button>
+<button id="deleteButton">Delete All Data</button>
+
+<script>
+
+document.getElementById('loadNerDataButton').addEventListener('click', function() {
+  fetch('/load-ner-data-4m-gpt4', {
+    method: 'POST',
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('All data has been successfully loaded.');
+    } else {
+      alert('Failed to load data.');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+
+document.getElementById('loadButtonReverseMapping').addEventListener('click', function() {
+  fetch('/load-all-data-reverse-mapping', {
+    method: 'POST',
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('All data has been successfully loaded.');
+    } else {
+      alert('Failed to load data.');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+
+
+document.getElementById('loadWoSubGroupButton').addEventListener('click', function() {
+  fetch('/load-all-data-wo-subgroup', {
+    method: 'POST',
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('All data has been successfully loaded.');
+    } else {
+      alert('Failed to load data.');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+
+document.getElementById('loadButton').addEventListener('click', function() {
+  fetch('/load-all-data', {
+    method: 'POST',
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('All data has been successfully loaded.');
+    } else {
+      alert('Failed to load data.');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+
+document.getElementById('deleteButton').addEventListener('click', function() {
+  fetch('/delete-all-data', {
+    method: 'POST',
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('All data has been successfully deleted.');
+    } else {
+      alert('Failed to delete data.');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+</script>
+
+</body>
+</html>
